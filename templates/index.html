@@ -6,7 +6,9 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
-  <link rel="stylesheet" href="./style.css">
+  <!-- <link rel="stylesheet" href="./style.css"> -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
@@ -158,7 +160,9 @@
   </div>
 </body>
 <!-- partial -->
-  <script  src="./script.js"></script>
+  <!-- <script  src="./script.js"></script> -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
   <script>
     // 新增網頁載入完成後執行事件傾聽器, 確認網頁載入完成後才有DOM可以用
     document.addEventListener('DOMContentLoaded', function() {
