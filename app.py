@@ -23,5 +23,8 @@ def static_file(path):
 def home():
     return send_file('templates/index.html')
 
-# 啟動flask server
-app.run(debug=True, port=5000)    # 預設port=80, 在網址後面就不用加":port"
+# # 啟動flask server
+# app.run(debug=True, port=80)    # 預設port=80, 在網址後面就不用加":port"
+# 啟動 Gunicorn 來運行 Flask 應用程式
+if __name__ == "__main__":
+    app.run(debug=False, host='0.0.0.0', port=10000)  # 不要用在生產環境
