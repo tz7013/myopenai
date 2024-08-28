@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Material Messaging App Concept</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body>
+  <div class="container">
+    <div class="row">
+      <nav class="menu">
+        <ul class="items">
+          <li class="item">
+            <i class="fa fa-home" aria-hidden="true"></i>
+          </li>
+          <li class="item">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </li>
+          <li class="item">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </li>
+          <li class="item item-active">
+            <i class="fa fa-commenting" aria-hidden="true"></i>
+          </li>
+          <li class="item">
+            <i class="fa fa-file" aria-hidden="true"></i>
+          </li>
+          <li class="item">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+          </li>
+        </ul>
+      </nav>
+
+      <section class="discussions">
+        <div class="discussion search">
+          <div class="searchbar">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" placeholder="Search..."></input>
+          </div>
+        </div>
+        <div class="discussion message-active">
+          <div class="photo" style="background-image: url(https://i.ibb.co/RGXDyZz/img-a-Vt-Nep-Jf-QDFNml-EUc-Jpg-VH6h.jpg);">
+            <div class="online"></div>
+          </div>
+          <div class="desc-contact">
+            <p class="name">OPENAI</p>
+            <p class="message">9 pm at the bar if possible 😳</p>
+          </div>
+          <div class="timer">12 sec</div>
+        </div>
+
+        <div class="discussion">
+          <div class="photo" style="background-image: url(http://e0.365dm.com/16/08/16-9/20/theirry-henry-sky-sports-pundit_3766131.jpg?20161212144602);">
+            <div class="online"></div>
+          </div>
+          <div class="desc-contact">
+            <p class="name">Dave Corlew</p>
+            <p class="message">Let's meet for a coffee or something today ?</p>
+          </div>
+          <div class="timer">3 min</div>
+        </div>
+
+        <div class="discussion">
+          <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1497551060073-4c5ab6435f12?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80);">
+          </div>
+          <div class="desc-contact">
+            <p class="name">Jerome Seiber</p>
+            <p class="message">I've sent you the annual report</p>
+          </div>
+          <div class="timer">42 min</div>
+        </div>
+
+        <div class="discussion">
+          <div class="photo" style="background-image: url(http://thomasdaubenton.xyz/portfolio/images/photo.jpg);">
+            <div class="online"></div>
+          </div>
+          <div class="desc-contact">
+            <p class="name">Thomas Dbtn</p>
+            <p class="message">See you tomorrow ! 🙂</p>
+          </div>
+          <div class="timer">2 hour</div>
+        </div>
+
+        <div class="discussion">
+          <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1553514029-1318c9127859?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80);">
+          </div>
+          <div class="desc-contact">
+            <p class="name">Elsie Amador</p>
+            <p class="message">What the f**k is going on ?</p>
+          </div>
+          <div class="timer">1 day</div>
+        </div>
+
+        <div class="discussion">
+          <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1541747157478-3222166cf342?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=967&q=80);">
+          </div>
+          <div class="desc-contact">
+            <p class="name">Billy Southard</p>
+            <p class="message">Ahahah 😂</p>
+          </div>
+          <div class="timer">4 days</div>
+        </div>
+
+        <div class="discussion">
+          <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1435348773030-a1d74f568bc2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80);">
+            <div class="online"></div>
+          </div>
+          <div class="desc-contact">
+            <p class="name">Paul Walker</p>
+            <p class="message">You can't see me</p>
+          </div>
+          <div class="timer">1 week</div>
+        </div>
+      </section>
+      <section class="chat">
+        <div class="header-chat">
+          <i class="icon fa fa-user-o" aria-hidden="true"></i>
+          <p class="name">OPENAI</p>
+          <i class="icon clickable fa fa-ellipsis-h right" aria-hidden="true"></i>
+        </div>
+
+        <!-- 對話視窗框-->
+        <div id="chat", class="messages-chat", style="height: 530px;overflow-y: auto;">
+                  
+          <!--左邊訊息欄位-->
+          <div class="message">
+            <div class="photo" style="background-image: url(https://i.ibb.co/RGXDyZz/img-a-Vt-Nep-Jf-QDFNml-EUc-Jpg-VH6h.jpg);">
+              <div class="online"></div>
+            </div>
+            <p class="text"> 您好, 有什麼可以幫助您的? </p>
+          </div>
+          <p class="time"> 14:58</p>
+
+          <!--右邊訊息欄位-->
+          <!-- <div class="message text-only">
+            <div class="response">
+              <p class="text"> Hey Megan ! It's been a while 😃</p>
+            </div>
+          </div>
+          <p class="response-time time"> 15:04</p> --> 
+
+        <div class="footer-chat">
+
+          <i class="icon fa fa-smile-o clickable" style="font-size:25pt;" aria-hidden="true"></i>
+          <!--新增訊息欄的標籤id="message"-->
+          <input id="message" type="text" class="write-message" placeholder="Type your message here"></input>
+          <!--新增按鈕的標籤id="send"-->  
+          <i id="send" class="icon send fa fa-paper-plane-o clickable" aria-hidden="true"></i>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+<!-- partial -->
+  <script  src="./script.js"></script>
+  <script>
+    // 新增網頁載入完成後執行事件傾聽器, 確認網頁載入完成後才有DOM可以用
+    document.addEventListener('DOMContentLoaded', function() {
+      // 打v1/chat API與OpenAI聊天
+      function chat(msg)
+      {
+        axios.get('/v1/chat?msg=' + msg)
+          .then(function(response) {
+            // hanfle success
+            console.log(msg);
+            console.log(response);
+            if(response.data.indexOf('https://') == 0)
+              addLeftImage(response.data)
+            else
+              addLeftMessage(response.data);
+          })
+          .catch(function(error) {
+            // handle error
+            console.log(error)
+          })
+          .finally(function () {
+            // always executed
+          });
+      }
+      // function addLeftImag(msg)
+      // {
+      //   let chat = document.getElementById('chat');
+
+      //   // 建立新的元素
+      //   let div1 = document.createElement('div');
+      //   // 幫新的元素加上class屬性
+      //   div1.classList.add('message')
+
+      //   let div2 = document.createElement('div');
+      //   div2.classList.add('photo')
+      //   // 幫新的元素設定樣式
+      //   div2.style = "min-width: 45px; background-image: url('https://i.ibb.co/RGXDyZz/img-a-Vt-Nep-Jf-QDFNml-EUc-Jpg-VH6h.jpg');"
+
+      //   let div3 = document.createElement('div');
+      //   div3.classList.add('online')
+
+      //   let img = document.createElement('img');
+      //   img.style = 'width: 100%; margin-bottom: 10px';
+        
+      //   let p2 = document.createElement('p');
+      //   p2.classList.add('time');
+      //   let time_node = document.createTextNode("14:00");
+      //   p2.appendChild(time_node);
+
+      //   // 整合
+      //   div2.appendChild(div3);
+      //   div1.appendChild(div2);
+      //   div1.appendChild(p1);
+
+      //   // 將元素新增到網頁上
+      //   chat.appendChild(div1);
+      //   chat.appendChild(p2);
+
+      //   // 捲動訊息最新一則
+      //   chat.scrollTo(0, chat.scrollHeight);
+      // }
+
+      function addLeftImage(addr) {
+        // 取得聊天室父元素
+        let chat = document.getElementById('chat');
+
+        // 建立新的元素
+        let img = document.createElement('img');
+        img.src = addr;
+        img.style = "width: 100%; margin-bottom: 10px;";
+
+        chat.appendChild(img);
+
+        // 捲動訊息最新一則
+        chat.scrollTo(0, chat.scrollHeight);
+      }
+
+      function addLeftMessage(msg)
+      {
+        // 取得聊天室父元素
+        let chat = document.getElementById('chat');
+        // 建立新的元素
+        let div1 = document.createElement('div');
+        // 幫新的元素加上class屬性
+        div1.classList.add('message')
+
+        let div2 = document.createElement('div');
+        div2.classList.add('photo')
+        // 幫新的元素設定樣式
+        div2.style = "min-width: 45px; background-image: url('https://i.ibb.co/RGXDyZz/img-a-Vt-Nep-Jf-QDFNml-EUc-Jpg-VH6h.jpg');"
+
+        let div3 = document.createElement('div');
+        div3.classList.add('online')
+
+        let p1 = document.createElement('pre');
+        // p1.classList.add('text');
+        p1.classList.add('text');
+        p1.style = 'white-space: pre-wrap';
+        // 建立標籤內的文字node
+        let msg_node = document.createTextNode(msg);
+        // 將文字node設定給需要的標籤
+        p1.appendChild(msg_node);
+
+        let p2 = document.createElement('p');
+        p2.classList.add('time');
+        let time_node = document.createTextNode("14:00");
+        p2.appendChild(time_node);
+
+        // 整合
+        div2.appendChild(div3);
+        div1.appendChild(div2);
+        div1.appendChild(p1);
+
+        // 將元素新增到網頁上
+        chat.appendChild(div1);
+        chat.appendChild(p2);
+
+        // 捲動訊息最新一則
+        chat.scrollTo(0, chat.scrollHeight);
+      }
+
+      function addRightMessage(msg)
+      {
+        // 取得聊天室父元素
+        let chat = document.getElementById('chat');
+        // 建立新的元素
+        let div1 = document.createElement('div');
+        // 幫新的元素加上class屬性
+        div1.classList.add('message');
+        div1.classList.add('text-only');
+
+        let div2 = document.createElement('div');
+        div2.classList.add('response');
+
+        let p1 = document.createElement('p');
+        p1.classList.add('text');
+        // 建立標籤內的文字node
+        let msg_node = document.createTextNode(msg);
+        // 將文字node設定給需要的標籤
+        p1.appendChild(msg_node);
+        
+        let p2 = document.createElement('p');
+        p2.classList.add('response-time');
+        p2.classList.add('time');
+        let time_node = document.createTextNode("14:00");
+        p2.appendChild(time_node);
+
+        // 整合
+        div1.appendChild(div2);
+        div1.appendChild(p1);
+
+        // 將元素新增到網頁上
+        chat.appendChild(div1);
+        chat.appendChild(p2);
+        
+        chat.scrollTo(0, chat.scrollHeight);
+      }
+    
+      let message_input = document.getElementById('message');
+
+      message_input.addEventListener('keydown', function(event){
+        if(event.key == 'Enter'){
+          // alert('Enter被按下了: ' + message_input.value);
+          addRightMessage(message_input.value);
+          chat(message_input.value);
+          message_input.value = ''
+        }
+      });
+
+      // 取得id=send這個標籤
+      let send_btn = document.getElementById('send');
+      // 幫send標籤加上點擊事件傾聽器, 處理點擊要做的事情
+      send_btn.addEventListener('click', function(){
+        // alert('按鈕被點集了: ' + message_input.value);
+        chat(message_input.value);
+        addRightMessage(message_input.value);
+        message_input.value = ''
+      });
+    });
+  </script>
+
+</body>
+</html>
