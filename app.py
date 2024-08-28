@@ -24,4 +24,4 @@ def home():
     return send_file('templates/index.html')
 
 # 啟動flask server
-app.run(debug=True, port=5000)    # 預設port=80, 在網址後面就不用加":port"
+app.run(debug=True, port=80)    # 預設port=80, 在網址後面就不用加":port"
