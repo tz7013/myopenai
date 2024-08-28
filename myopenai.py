@@ -4,6 +4,7 @@ import pprint         # 美化輸出
 import subprocess
 from datetime import datetime
 client = OpenAI()
+
 current_time = '現在時間'+datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # 開啟網頁
@@ -40,21 +41,6 @@ tools = [
                 "required": ["num"],
             }
         },
-        "type": "function",
-        "function": {
-            "name": "word_to_img",
-            "description": "文字生成圖片",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "num": {                        
-                        "type": "string",                   
-                        "description": "文字描述",  
-                    }, 
-                },
-                "required": ["num"],
-            }
-        },
     }
 ]
 
@@ -82,8 +68,7 @@ def aichat(user):
         print(f'需要呼叫: {tool_calls[0].function.name} 函式')
 
         available_functions = {
-            "open_internet": open_internet,
-            "word_to_img": word_to_img
+            "open_internet": open_internet
         }
 
         messages.append(response_message)
@@ -100,9 +85,6 @@ def aichat(user):
                 num=function_args.get("num"),
             )
 
-            if function_name == 'word_to_img':
-                return function_response
-
             messages.append(
                 {
                     "tool_call_id": tool_call.id,
@@ -111,14 +93,7 @@ def aichat(user):
                     "content": function_response,
                 }
             )
-        # # pprint.pprint(messages)
-        # # # 使用文生圖不需要進行第二次聊天
-        # # if function_name == 'word_to_img':
-        # #     result = messages[5]['content']
 
-        # else:
-            # pprint.pprint(messages)
-            # 進行第二次聊天
         completion = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=messages,
@@ -127,4 +102,3 @@ def aichat(user):
     result = completion.choices[0].message.content
     # print(result)
     return result
-# aichat('請幫我生成一張龍捲風的圖片')

@@ -19,3 +19,7 @@ def home():
 # 只在開發環境下使用 Flask 內建伺服器
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=10000)
+
+# # 在本機端執行
+# if __name__ == '__main__':
+#     app.run(debug=True, port=80)
